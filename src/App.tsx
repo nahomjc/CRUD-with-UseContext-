@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext, createContext } from "react";
 import Grid from "@material-ui/core/Grid/Grid";
 import "./App.css";
 
-import { TextInput, Paper } from "@mantine/core";
+import { TextInput, Paper, Text } from "@mantine/core";
 import {
   NumberInput,
   Button,
@@ -121,6 +121,9 @@ function EmployeeForm() {
   return (
     <>
       {" "}
+      <Text mt={-39} className="text">
+        Insert Row
+      </Text>
       <form onSubmit={handleSubmit}>
         <Grid
           container
@@ -164,7 +167,7 @@ function EmployeeForm() {
           />
 
           <Button color="gray" type="submit" w={250} disabled={!name} mt={20}>
-            Add Employee
+            Insert
           </Button>
         </Grid>
       </form>
@@ -228,7 +231,7 @@ function EmployeeList() {
             </tr>
           ))}
         </tbody>
-        {employees.length === 0 ? "Empty please add employee" : ""}
+        {employees.length === 0 ? <Text>Field Empty😞 please add</Text> : ""}
       </Table>
     </div>
   );

@@ -73,9 +73,9 @@ select option {
 .container{
   display: flex;
  
- padding: 59px;
+ padding: 220px;
 
- 
+ margin-top: -130px;
 }
 
 .night .form{
@@ -97,8 +97,8 @@ select option {
  
 }
 .selected-row {
-  background-color: #008000;
   color: white;
+  background-color: #114511;
 }
 
 .selected-row * {
@@ -111,6 +111,13 @@ select option {
  margin-left: 20px;
   align-items: center;
   border-radius: 10px;
+}
+.text{
+  background-color: rgb(58, 53, 53);
+  width: 80px;
+}
+.day .text{
+  background-color: white;
 }
 .App-link {
   color: #61dafb;
