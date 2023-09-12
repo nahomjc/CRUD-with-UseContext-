@@ -1,20 +1,8 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import {
-  TextField,
-  FormControlLabel,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@material-ui/core";
+
 import Grid from "@material-ui/core/Grid/Grid";
 import "./App.css";
-import {
-  createMuiTheme,
-  createTheme,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+
 import { TextInput, Paper } from "@mantine/core";
 import {
   NumberInput,
@@ -49,19 +37,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 const EmployeeContext = createContext<EmployeeContextProps | undefined>(
   undefined
 );
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#008000", // Set your desired primary color here
-    },
-    background: {
-      default: "#008000", // Set your desired background color here
-    },
-    text: {
-      primary: "#008000", // Set your desired text color here
-    },
-  },
-});
+
 function App() {
   const [themex, setTheme] = useState("night");
   const [employees, setEmployees] = useState<Employee[]>([]);
