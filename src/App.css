@@ -6,24 +6,112 @@
   height: 40vmin;
   pointer-events: none;
 }
+.night .mantine-Select-dropdown {
+  background-color:  rgb(58, 53, 53); /* Set the background color to black */
+  color: #080808; /* Set the text color to white */
+  border: none; /* Remove the border */
+  padding: 8px; /* Add some padding */
+}
 
+/* Styling for the select options */
+select option {
+  background-color: #000; /* Set the background color to black */
+  color: #fff; /* Set the text color to white */
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.day {
+  background-color: white;
+  color: black;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.night {
+  background-color: rgb(58, 53, 53);
+  color: white;
+}
+.night * {
+  color: white;
+}
+.night .mantine-Button-root{
+  background-color:  rgb(90, 90, 90); /* Set the background color to black */
+  color: #080808; }
+.night .table-row {
+  color: white;
+  background-color:  rgb(90, 90, 90);
+}
+.table-row{
+   background-color:  rgb(134,142,150);
+   width: 600px;
+   border: 1px solid  rgb(134,142,150);
+ 
+}
+.night .table-cell {
+  color: white;
+}
+.night input {
+  background-color: rgb(68, 65, 65);
   color: white;
 }
 
+/* White borders */  
+.night input {
+  border: 1px solid white;
+}
+
+/* Placeholder text */
+.night ::placeholder {
+  color:white; 
+}
+
+/* Remove input shadows */
+.night input:focus {
+  box-shadow: none;
+}
+.container{
+  display: flex;
+ 
+ padding: 59px;
+
+ 
+}
+
+.night .form{
+  border: 1px solid white;
+}
+.night .table{
+ 
+}
+.form {
+  border: 1px solid rgb(207, 207, 207);
+  width: 290px;
+  height: 410px;
+  padding: 26px;
+ justify-content: space-around;
+
+  align-items: center;
+  border-radius: 10px;
+  
+ 
+}
+.selected-row {
+  background-color: #008000;
+  color: white;
+}
+
+.selected-row * {
+  color: white;
+}
+.table{
+ 
+  
+  padding-left: -10px;
+ margin-left: 20px;
+  align-items: center;
+  border-radius: 10px;
+}
 .App-link {
   color: #61dafb;
 }
