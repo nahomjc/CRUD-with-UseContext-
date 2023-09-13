@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { notifications } from "@mantine/notifications";
 import { Button } from "@mantine/core";
 import { Employee, EmployeeContextProps } from "../model/EmployeeModel";
-
+import "../App.css";
 export const DeleteEmployee = () => {
   const { employees, selected, setEmployees } = useContext(
     EmployeeContext
