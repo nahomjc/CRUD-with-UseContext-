@@ -1,33 +1,13 @@
 import "../App.css";
-import React, { useState, useEffect, useContext, createContext } from "react";
-import { TextInput, Paper, Text } from "@mantine/core";
+import React, { useState, useEffect, useContext } from "react";
+import { Text, Table } from "@mantine/core";
 
-import {
-  NumberInput,
-  Button,
-  Select,
-  Switch,
-  Divider,
-  Table,
-  Checkbox,
-} from "@mantine/core";
 import { EmployeeContext } from "../App";
-import { notifications } from "@mantine/notifications";
-interface Employee {
-  name: string;
-  age: string | number;
-  subscribed: string | number;
-  employed: boolean;
-}
-interface EmployeeContextProps {
-  employees: Employee[];
-  handleDelete: any;
-  selected: any;
-  setSelected: any;
-  setEmployees: any;
-}
+
+import { EmployeeContextProps } from "../model/EmployeeModel";
+
 const EmployeeList = () => {
-  const { employees, selected, setSelected } = useContext(
+  const { employees, setSelected } = useContext(
     EmployeeContext
   ) as EmployeeContextProps;
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
