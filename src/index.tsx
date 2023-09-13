@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MantineProvider } from "@mantine/core";
-
+import { Notifications } from "@mantine/notifications";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -16,16 +16,16 @@ root.render(
       theme={{
         colors: {
           brand: [
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
-            "#114511",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
+            "#347346",
           ],
         },
         breakpoints: {
@@ -38,6 +38,8 @@ root.render(
         primaryColor: "brand",
       }}
     >
+      {" "}
+      <Notifications />
       <App />
     </MantineProvider>
   </React.StrictMode>
