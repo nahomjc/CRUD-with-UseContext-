@@ -2,26 +2,15 @@ import { EmployeeContext } from "../App";
 import React, { useContext } from "react";
 import { notifications } from "@mantine/notifications";
 import { Button } from "@mantine/core";
-interface Employee {
-  name: string;
-  age: string | number;
-  subscribed: string | number;
-  employed: boolean;
-}
-interface EmployeeContextProps {
-  employees: Employee[];
-  handleDelete: any;
-  selected: any;
-  setSelected: any;
-  setEmployees: any;
-}
+import { Employee, EmployeeContextProps } from "../model/EmployeeModel";
+import "../App.css";
 export const DeleteEmployee = () => {
   const { employees, selected, setEmployees } = useContext(
     EmployeeContext
   ) as EmployeeContextProps;
   const handleDelete = () => {
     const newEmployees = [...employees];
-
+    console.log(employees);
     if (selected !== null) {
       newEmployees.splice(selected as number, 1);
       setEmployees(newEmployees);
