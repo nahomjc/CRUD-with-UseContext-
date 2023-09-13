@@ -12,22 +12,12 @@ import {
   Divider,
   Table,
   Checkbox,
+  Group,
 } from "@mantine/core";
 import { EmployeeContext } from "../App";
 import { notifications } from "@mantine/notifications";
-interface Employee {
-  name: string;
-  age: string | number;
-  subscribed: string | number;
-  employed: boolean;
-}
-interface EmployeeContextProps {
-  employees: Employee[];
-  handleDelete: any;
-  selected: any;
-  setSelected: any;
-  setEmployees: any;
-}
+
+import { EmployeeContextProps } from "../model/EmployeeModel";
 const AddEmployee = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState<number | "">(18);
@@ -62,17 +52,12 @@ const AddEmployee = () => {
         Insert Row
       </Text>
       <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-evenly"
-          alignItems="flex-start"
-        >
+        <Group>
           <TextInput
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Name"
-            pb={10}
+            pb={5}
             w={250}
           />
           <NumberInput
@@ -82,7 +67,7 @@ const AddEmployee = () => {
             max={120}
             min={18}
             w={250}
-            pb={10}
+            pb={5}
           />
           <Select
             placeholder="Pick one"
@@ -100,13 +85,13 @@ const AddEmployee = () => {
             checked={employed}
             onChange={(e) => setEmployed(e.target.checked)}
             label="Employed"
-            pt={20}
+            pt={6}
           />
 
-          <Button color="gray" type="submit" w={250} disabled={!name} mt={20}>
+          <Button color="gray" type="submit" w={250} disabled={!name} mt={10}>
             Insert
           </Button>
-        </Grid>
+        </Group>
       </form>
     </>
   );
