@@ -24,7 +24,7 @@ function App() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [selected, setSelected] = useState(null);
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("themex");
+    const localTheme = window.localStorage.getItem("theme");
     setTheme(localTheme || "night");
   }, []);
 
