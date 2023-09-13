@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState,  useContext } from "react";
 
-import Grid from "@material-ui/core/Grid/Grid";
+
 import "../App.css";
 
-import { TextInput, Paper, Text } from "@mantine/core";
+import { TextInput, Text } from "@mantine/core";
 import {
   NumberInput,
   Button,
   Select,
-  Switch,
-  Divider,
-  Table,
+
   Checkbox,
   Group,
 } from "@mantine/core";
