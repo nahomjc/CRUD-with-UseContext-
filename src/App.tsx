@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from "react";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import "./App.css";
-
+import AddEmployee from "./component/AddEmployee";
 import { TextInput, Paper, Text } from "@mantine/core";
 import {
   NumberInput,
@@ -13,6 +13,8 @@ import {
   Table,
   Checkbox,
 } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { DeleteEmployee } from "./component/DeleteEmployee";
 interface Employee {
   name: string;
   age: string | number;
@@ -21,25 +23,25 @@ interface Employee {
 }
 
 interface ThemeContextProps {
-  themex: string;
+  theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface EmployeeContextProps {
   employees: Employee[];
-  handleDelete: any;
+
   selected: any;
   setSelected: any;
   setEmployees: any;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
-const EmployeeContext = createContext<EmployeeContextProps | undefined>(
+export const EmployeeContext = createContext<EmployeeContextProps | undefined>(
   undefined
 );
 
 function App() {
-  const [themex, setTheme] = useState("night");
+  const [theme, setTheme] = useState("night");
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [selected, setSelected] = useState(null);
   useEffect(() => {
@@ -48,8 +50,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("theme", themex);
-  }, [themex]);
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const localEmployees = JSON.parse(
@@ -58,32 +60,25 @@ function App() {
     setEmployees(localEmployees);
   }, []);
 
-  const handleDelete = (index: number) => {
-    const newEmployees = [...employees];
-
-    newEmployees.splice(index, 1);
-    setEmployees(newEmployees);
-    window.localStorage.setItem("employees", JSON.stringify(newEmployees));
-  };
-
   return (
-    <ThemeContext.Provider value={{ themex, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <EmployeeContext.Provider
-        value={{ employees, handleDelete, selected, setSelected, setEmployees }}
+        value={{ employees, selected, setSelected, setEmployees }}
       >
-        <div className={themex}>
+        <div className={theme}>
           <div className="container">
             <div className=" form">
-              <EmployeeForm />
+              <AddEmployee />
               <Divider size="xs" mt={30} />
               <Switch
                 label="Mode"
-                checked={themex === "night"}
-                onChange={() => setTheme(themex === "day" ? "night" : "day")}
+                checked={theme === "night"}
+                onChange={() => setTheme(theme === "day" ? "night" : "day")}
                 pt={40}
                 mb={20}
               />
-              <DeleteButton />
+
+              <DeleteEmployee />
             </div>
             <div className=" table">
               <EmployeeList />
@@ -95,103 +90,8 @@ function App() {
   );
 }
 
-function EmployeeForm() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState<number | "">(18);
-  const [subscribed, setSubscribed] = useState("subscribed");
-  const [employed, setEmployed] = useState(false);
-  const { setEmployees } = useContext(EmployeeContext) as EmployeeContextProps;
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const employees = JSON.parse(
-      window.localStorage.getItem("employees") || "[]"
-    );
-    employees.push({ name, age, subscribed, employed });
-
-    const updated = [...employees];
-    setEmployees(updated);
-    window.localStorage.setItem("employees", JSON.stringify(employees));
-    setName("");
-    setAge(18);
-
-    setEmployed(false);
-    console.log(employees);
-  };
-
-  return (
-    <>
-      {" "}
-      <Text mt={-39} className="text">
-        Insert Row
-      </Text>
-      <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-evenly"
-          alignItems="flex-start"
-        >
-          <TextInput
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Name"
-            pb={10}
-            w={250}
-          />
-          <NumberInput
-            defaultValue={18}
-            onChange={setAge}
-            placeholder="Age"
-            max={120}
-            min={18}
-            w={250}
-            pb={10}
-          />
-          <Select
-            placeholder="Pick one"
-            value={subscribed}
-            onChange={setSubscribed as any}
-            data={[
-              { value: "subscribed", label: "Subscribed" },
-              { value: "NotSubscribed", label: "NotSubscribed" },
-              { value: "Others", label: "others" },
-            ]}
-            w={250}
-          />
-
-          <Checkbox
-            checked={employed}
-            onChange={(e) => setEmployed(e.target.checked)}
-            label="Employed"
-            pt={20}
-          />
-
-          <Button color="gray" type="submit" w={250} disabled={!name} mt={20}>
-            Insert
-          </Button>
-        </Grid>
-      </form>
-    </>
-  );
-}
-function DeleteButton() {
-  const { employees, handleDelete, selected } = useContext(
-    EmployeeContext
-  ) as EmployeeContextProps;
-
-  return (
-    <Button
-      color="gray"
-      onClick={() => handleDelete(selected)}
-      w={250}
-      disabled={employees.length === 0}
-    >
-      Delete
-    </Button>
-  );
-}
 function EmployeeList() {
-  const { employees, handleDelete, selected, setSelected } = useContext(
+  const { employees, selected, setSelected } = useContext(
     EmployeeContext
   ) as EmployeeContextProps;
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
@@ -206,7 +106,7 @@ function EmployeeList() {
   console.log(employees, "list");
   return (
     <div>
-      <Table withBorder miw={800}>
+      <Table withBorder miw={860}>
         <thead>
           <tr className="table-row">
             <th className="table-row">Name</th>
@@ -231,7 +131,7 @@ function EmployeeList() {
             </tr>
           ))}
         </tbody>
-        {employees.length === 0 ? <Text>Field Empty😞 please add</Text> : ""}
+        {employees.length === 0 ? <Text> Empty😞 🙏Please Add</Text> : ""}
       </Table>
     </div>
   );
