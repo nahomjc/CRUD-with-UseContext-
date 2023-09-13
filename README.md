@@ -1,9 +1,17 @@
-# Getting Started with Create React App
+
 ![GitHub Logo](https://i.imgur.com/9iNc56A.png)
+💻This code implements the following features:
+
+✔Adding a list of employee names, ages, and subscription status.
+✔Deleting a list of employees.
+✔Switching modes between day and night.
+✔Storing the database as a JS array in LocalStorage.
+✔Using useContext to pass data between components.
+# Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
+###  `npm install -g npm`
 In the project directory, you can run:
 
 ### `npm start`
