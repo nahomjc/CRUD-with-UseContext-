@@ -16,7 +16,7 @@ const EmployeeList = () => {
     console.log(employees, "list");
   }, [employees]);
   const handleRowClick = (index: number) => {
-    setSelected(index);
+    setSelected(index as any);
     setSelectedRow(index);
   };
   console.log(employees, "list");

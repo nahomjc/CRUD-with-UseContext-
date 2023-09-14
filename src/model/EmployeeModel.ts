@@ -6,7 +6,7 @@ export interface Employee {
 }
 export interface EmployeeContextProps {
   employees: Employee[];
-  selected: any;
-  setSelected: any;
-  setEmployees: any;
+  selected: number | null;
+  setSelected: React.Dispatch<React.SetStateAction<null>>;
+  setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
 }
