@@ -17,9 +17,9 @@ import { notifications } from "@mantine/notifications";
 
 import { EmployeeContextProps } from "../model/EmployeeModel";
 const AddEmployee = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string>("");
   const [age, setAge] = useState<number | "">(18);
-  const [subscribed, setSubscribed] = useState("subscribed");
+  const [subscribed, setSubscribed] = useState<string>("subscribed");
   const [employed, setEmployed] = useState(false);
   const { setEmployees } = useContext(EmployeeContext) as EmployeeContextProps;
   const handleSubmit = (e: React.FormEvent) => {
